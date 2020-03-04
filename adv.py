@@ -1,9 +1,9 @@
-from room import Room
-from player import Player
-from world import World
-
 import random
 from ast import literal_eval
+
+from player import Player
+from room import Room
+from world import World
 
 # Load world
 world = World()
@@ -85,22 +85,6 @@ while len(rooms) < len(room_graph) - 1:
 visited_rooms = set()
 player.current_room = world.starting_room
 visited_rooms.add(player.current_room)
-for move in traversal_path:
-    player.travel(move)
-    visited_rooms.add(player.current_room)
-
-if len(visited_rooms) == len(room_graph):
-    print(
-        f"TESTS PASSED: {len(traversal_path)} moves, {len(visited_rooms)} rooms visited")
-else:
-    print("TESTS FAILED: INCOMPLETE TRAVERSAL")
-    print(f"{len(room_graph) - len(visited_rooms)} unvisited rooms")
-
-# TRAVERSAL TEST
-visited_rooms = set()
-player.current_room = world.starting_room
-visited_rooms.add(player.current_room)
-
 for move in traversal_path:
     player.travel(move)
     visited_rooms.add(player.current_room)
